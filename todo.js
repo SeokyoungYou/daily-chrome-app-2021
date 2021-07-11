@@ -2,7 +2,9 @@
 const toDoForm = document.querySelector(".js-toDoForm"), //이름 겹치는 모듈 만드려면 유튜브클론 들어라
   toDoInput = toDoForm.querySelector("input"),
   toDoList = document.querySelector(".js-toDoList");
-const TODOS_LS = "toDos"; //타이핑 실수 안하려고 문자열 저장
+const TODOS_LS = "toDos",
+  TODO_ITEM_CN = "toDo__item",
+  DELBTN_CN = "del-button"; //타이핑 실수 안하려고 문자열 저장
 
 let toDos = []; // toDos를 저장하기 위해 array 만들기
 
@@ -24,14 +26,16 @@ function paintToDo(text) {
   //console.log(text);
   // JS에서 HTML로 생성하기
   const li = document.createElement("li");
-  const delBtn = document.createElement("button");
+  li.classList.add(TODO_ITEM_CN);
   const span = document.createElement("span");
+  const delBtn = document.createElement("span");
+  delBtn.classList.add(DELBTN_CN);
   const newId = toDos.length + 1; // array 비었을 때는 id =1
-  delBtn.innerText = "❌"; // 이모지:window + . or ;
+  delBtn.innerText = "x"; // 이모지:window + . or ;
   delBtn.addEventListener("click", deleteToDo);
   span.innerText = text;
-  li.appendChild(delBtn); //만든 tag들을 child로 넣어주기
   li.appendChild(span);
+  li.appendChild(delBtn); //만든 tag들을 child로 넣어주기
   li.id = newId;
   toDoList.appendChild(li);
   const toDoObj = {

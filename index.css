@@ -1,31 +1,73 @@
-body {
-  background-color: #2c3e50;
+:root {
+  --blue: #3d6dff;
+  --purple: #6250fe;
+  --horizontal-space: 25px;
+  --main--border: 1px solid rgba(0, 0, 0, 0.3);
+  --gray: rgba(0, 0, 0, 0.5);
 }
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700&display=swap");
+body {
+  font-family: "Manrope", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  color: white;
+}
+
 .btn {
   cursor: pointer;
-}
-body {
-  color: #34495e;
 }
 .clicked {
   color: #7f8c8d;
 }
 .form,
-.greetings {
+.greetings,
+.logo,
+.toDoForm {
   display: none;
 }
 
 .showing {
   display: block;
+  font-size: 20px;
 }
-
-@keyframes fadeIn {
+.logo:hover {
+  animation: rotate 2s linear;
+}
+.running:hover {
+  animation: run 0.8s linear;
+}
+@keyframes run {
   from {
-    opacity: 0;
-  }
-  to {
+    right: 0%;
+    width: 200%;
     opacity: 1;
   }
+  to {
+    right: 100%;
+    width: 50%;
+    opacity: 0.3;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.showing-init-form {
+  display: block;
+  margin-top: 10vh;
+  height: 200px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .bgImage {
@@ -35,5 +77,80 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  animation: fadeIn 0.5s linear;
+  animation: fadeIn 2s linear;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.logo {
+  margin-top: 50px;
+  width: 150px;
+  height: 50px;
+}
+.input-text {
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+  padding: 1px 10px;
+  font-size: 15px;
+}
+.input-text::placeholder {
+  text-align: center;
+}
+.input-submit {
+  width: 200px;
+  height: 35px;
+  padding: 1px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: var(--purple);
+  border: 1.5px solid white;
+  color: oldlace;
+}
+.form span {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  animation: slidein 1.5s linear;
+}
+@keyframes slidein {
+  from {
+    left: 100%;
+    width: 300%;
+    opacity: 1;
+  }
+  to {
+    right: 100%;
+    width: 90%;
+    opacity: 0.3;
+  }
+}
+.weather-parent {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  top: 90vh;
+}
+.js-weather {
+  font-weight: 500;
+}
+.toDo__item {
+  list-style: none;
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+}
+.del-button {
+  cursor: pointer;
 }
